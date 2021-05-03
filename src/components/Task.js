@@ -2,6 +2,8 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Progress } from 'react-sweet-progress'
 import "react-sweet-progress/lib/style.css"
+import ModalEdit from './ModalEdit'
+import ModalDelete from './ModalDelete'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
@@ -26,16 +28,10 @@ const Task = (props) => {
     const showNewTask = () => setNewTask(true)
     const closeNewTask = () => setNewTask(false)
     
-    const [editTask, setEditTask] = useState(false)
-    const showEditTask = () => setEditTask(true)
-    const closeEditTask = () => setEditTask(false)
-    
     const [newName, setNewName] = useState(null)
     const [newPercent, setNewPercent] = useState(null)
-    // let newName, newPercent
     const handleChangeNewName = e => setNewName(e.target.value)
     const handleChangeNewPercent = e => setNewPercent(e.target.value.split("%")[0])
-
     const handleNewTask = () => {
         const newData = {
             "name": newName,
@@ -47,13 +43,6 @@ const Task = (props) => {
                 console.log(res)
             })
         setNewTask(false)
-    }
-    
-    const [editName, setEditName] = useState(null)
-    const [editPercent, setEditPercent] = useState(null)
-
-    const handleEditTask = () => {
-        
     }
 
     return (
@@ -83,10 +72,12 @@ const Task = (props) => {
                                                             <Dropdown.Item><span className="material-icons md-14">arrow_forward</span> Move Right</Dropdown.Item>
                                                         </>
                                             }
-                                            <Dropdown.Item><span onClick={showEditTask} className="material-icons md-14">edit</span> Edit</Dropdown.Item>
-                                            <Dropdown.Item><span className="material-icons md-14">delete</span> Delete</Dropdown.Item>
+                                            {/* <Dropdown.Item onClick={showEditTask}><span className="material-icons md-14">edit</span> Edit</Dropdown.Item> */}
+                                            <ModalEdit name={name} percent={progress_percentage} id={id} todo_id={todo_id} />
+                                            <ModalDelete  />
                                         </Dropdown.Menu>
                                     </Dropdown>
+                                    
                                 </div>
                             </div>
                         )
@@ -99,13 +90,13 @@ const Task = (props) => {
             <span onClick={showNewTask} className="new-task pointer"><span className="material-icons md-14">control_point</span> New Task</span>
             <Modal show={newTask} onHide={closeNewTask}>
                 <Modal.Header className="border-0" closeButton>
-                    <span className="form-head">Create Task</span>
+                    <span style={{color: "#262626"}} className="form-head">Create Task</span>
                 </Modal.Header>
                 <Modal.Body>
                     <Form.Label className="form-label">Task Name</Form.Label>
                     <FormControl type="text" placeholder="Task Name" onChange={handleChangeNewName} />
                     <Form.Label className="form-label">Progress (%)</Form.Label>
-                    <FormControl className="w-25" type="text" placeholder="0%" value={newPercent} onChange={handleChangeNewPercent} />
+                    <FormControl className="w-25" type="text" placeholder="0" onChange={handleChangeNewPercent} />
                 </Modal.Body>
                 <Modal.Footer className="border-0 my-1">
                     <Button className="btn-sm px-3 cancel-btn" variant="" onClick={closeNewTask}>

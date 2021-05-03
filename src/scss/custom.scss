@@ -109,4 +109,11 @@
     border: 1px solid #D9D9D9 !important;
 }
 
+.dropdown-item {
+    &:hover, &:active, &:focus {
+        background-color: #F5F0FC !important;
+        color: #5E20B3 !important;
+    }
+}
+
 @import '~bootstrap/scss/bootstrap.scss';
