@@ -34,4 +34,25 @@
     }
 }
 
+.task {
+    width: 100%;
+    font-weight: bold;
+    font-size: 14px;
+    color: #2F3136;
+    border: 1px solid #E4E4E8;
+    border-radius: 4px;
+    padding: 1rem;
+}
+
+.no-task {
+    width: 100%;
+    background-blend-mode: screen;
+    font-size: 14px;
+    color: #B7BDC9;
+    border: 1px solid #E4E4E8;
+    border-radius: 4px;
+    padding: 1rem;
+    margin: .5rem 0;
+}
+
 @import '~bootstrap/scss/bootstrap.scss';

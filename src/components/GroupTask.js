@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
+import Task from './Task'
 
 const GroupTask = () => {
     const [groups, setGroups] = useState(null)
@@ -42,6 +43,12 @@ const GroupTask = () => {
                                     : null
                                 }
                             </span>
+                            {
+                                groups
+                                ?  <Task id={groups[index].id} />
+                                : null
+                            }
+                           
                         </div>
                     )
                 })
