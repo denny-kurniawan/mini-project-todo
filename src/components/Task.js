@@ -22,7 +22,7 @@ const Task = (props) => {
                 setTasks(result)
             })
 
-    }, [tasks])
+    }, [tasks, id])
 
     const [newTask, setNewTask] = useState(false)
     const showNewTask = () => setNewTask(true)
@@ -51,7 +51,7 @@ const Task = (props) => {
                 tasks 
                 ? tasks.length > 0
                     ? tasks.map(task => {
-                        const { id, todo_id,  done, progress_percentage, name } = task
+                        const { id, todo_id, progress_percentage, name } = task
                         return (
                             <div key={id} className="task">
                                 <span>{name}</span> <br />
@@ -74,7 +74,7 @@ const Task = (props) => {
                                             }
                                             {/* <Dropdown.Item onClick={showEditTask}><span className="material-icons md-14">edit</span> Edit</Dropdown.Item> */}
                                             <ModalEdit name={name} percent={progress_percentage} id={id} todo_id={todo_id} />
-                                            <ModalDelete  />
+                                            <ModalDelete todo_id={todo_id} id={id} />
                                         </Dropdown.Menu>
                                     </Dropdown>
                                     

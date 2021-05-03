@@ -2,12 +2,19 @@ import React, { useState } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
+import axios from 'axios'
 
-const ModalDelete = () => {
+const ModalDelete = props => {
+    const { todo_id, id } = props
+
     const [showModal, setShowModal] = useState(false)
     const openClose = () => setShowModal(!showModal)
     const handleDelete = () => {
-
+        axios
+            .delete(`https://todos-project-api.herokuapp.com/todos/${todo_id}/items/${id}`)
+            .then(res => console.log(res))
+        
+        setShowModal(false)
     }
 
     return (
@@ -20,7 +27,7 @@ const ModalDelete = () => {
                 <Modal.Body>
                     <p className="ml-5" color="#262626">Are you sure want to delete this task?<br />Your action can’t be reverted.</p>
                 </Modal.Body>
-                <Modal.Footer className="border-0 my-1">
+                <Modal.Footer className="border-0">
                 <Button className="btn-sm px-3 cancel-btn" variant="" onClick={openClose}>
                     Cancel
                 </Button>
