@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios'
 import './scss/custom.scss'
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMywiZXhwIjoxNjIwMzgwNTA1fQ.tZpUAezlArp7z6uHFfwDmae9xI8IxY4oCKSIyNuaeas')
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
 
 ReactDOM.render(
   <React.StrictMode>

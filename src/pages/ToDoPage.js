@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col'
 
 const ToDoPage = () => {
     return (
-        <div className="bg">
+        <div className="bg my-font">
             <Col md="1" className="logo">
                 <Sidebar />
             </Col>
