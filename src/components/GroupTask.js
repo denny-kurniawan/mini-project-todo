@@ -28,7 +28,7 @@ const GroupTask = () => {
                 colors.map((color, index) => {
                     const { color1, color2, color3, color4 } = color
                     return (
-                        <div className="group" style={{border: `1px solid ${color1}`, backgroundColor: color2}}>
+                        <div key={groups ? groups[index].id : index} className="group" style={{border: `1px solid ${color1}`, backgroundColor: color2}}>
                             <span className="group-name font-size" style={{border: `1px solid ${color3}`, backgroundColor: color4}}>
                                 {
                                     groups
@@ -45,7 +45,7 @@ const GroupTask = () => {
                             </span>
                             {
                                 groups
-                                ?  <Task id={groups[index].id} />
+                                ?  <Task id={groups[index].id} index={index} />
                                 : null
                             }
                            

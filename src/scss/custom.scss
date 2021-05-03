@@ -1,3 +1,18 @@
+@import '~material-design-icons/iconfont/material-icons.css';
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-display: block;
+    font-weight: 400;
+    src: url(~material-design-icons/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+    src: local('Material Icons'),
+      local('MaterialIcons-Regular'),
+      url(~material-design-icons/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+      url(~material-design-icons/iconfont/MaterialIcons-Regular.woff) format('woff'),
+      url(~material-design-icons/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+}
+
 .sidebar {
     position: absolute;
     width: 68px;
@@ -42,6 +57,7 @@
     border: 1px solid #E4E4E8;
     border-radius: 4px;
     padding: 1rem;
+    margin: 1rem 0;
 }
 
 .no-task {
@@ -53,6 +69,44 @@
     border-radius: 4px;
     padding: 1rem;
     margin: .5rem 0;
+}
+
+.new-task {
+    font-size: 12px;
+    color: #2F3136;
+    margin: 1rem 0;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.dropdown-toggle::after {
+    display:none !important;
+}
+
+.vertical-align {
+    vertical-align: middle;
+}
+
+.material-icons.md-14 {
+    font-size: 14px;
+}
+
+.form-head {
+    font-size: 16px;
+    font-weight: bold;
+    color: #262626;
+}
+
+.form-label {
+    font-size: 12px;
+    color: #5D6372;
+}
+
+.cancel-btn {
+    color: #262626;
+    border: 1px solid #D9D9D9 !important;
 }
 
 @import '~bootstrap/scss/bootstrap.scss';
