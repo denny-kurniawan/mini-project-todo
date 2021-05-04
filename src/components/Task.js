@@ -37,12 +37,28 @@ const Task = (props) => {
             "name": newName,
             "progress_percentage": newPercent
         }
+        
         axios
             .post(`https://todos-project-api.herokuapp.com/todos/${id}/items`, newData)
-            .then(res => {
-                console.log(res)
-            })
-        setNewTask(false)
+            .then(res => setNewTask(false))
+    }
+
+    const handleMoveLeft = (e, todo_id, id) => {
+        const left = {
+            "target_todo_id": todo_id - 1
+        }
+
+        axios
+            .patch(`https://todos-project-api.herokuapp.com/todos/${todo_id}/items/${id}`, left)
+    }
+
+    const handleMoveRight = (e, todo_id, id) => {
+        const right = {
+            "target_todo_id": todo_id + 1
+        }
+
+        axios
+            .patch(`https://todos-project-api.herokuapp.com/todos/${todo_id}/items/${id}`, right)
     }
 
     return (
@@ -64,12 +80,12 @@ const Task = (props) => {
                                         <Dropdown.Menu>
                                             {
                                                 index === 0
-                                                    ? <Dropdown.Item><span className="material-icons md-14">arrow_forward</span> Move Right</Dropdown.Item>
+                                                    ? <Dropdown.Item onClick={e => handleMoveRight(e, todo_id, id)}><span className="material-icons md-14">arrow_forward</span> Move Right</Dropdown.Item>
                                                     : index === 3
-                                                        ? <Dropdown.Item><span className="material-icons md-14">arrow_back</span> Move Left</Dropdown.Item>
+                                                        ? <Dropdown.Item onClick={e => handleMoveLeft(e, todo_id, id)}><span className="material-icons md-14">arrow_back</span> Move Left</Dropdown.Item>
                                                         : <>
-                                                            <Dropdown.Item><span className="material-icons md-14">arrow_back</span> Move Left</Dropdown.Item>
-                                                            <Dropdown.Item><span className="material-icons md-14">arrow_forward</span> Move Right</Dropdown.Item>
+                                                            <Dropdown.Item onClick={e => handleMoveLeft(e, todo_id, id)}><span className="material-icons md-14">arrow_back</span> Move Left</Dropdown.Item>
+                                                            <Dropdown.Item onClick={e => handleMoveRight(e, todo_id, id)}><span className="material-icons md-14">arrow_forward</span> Move Right</Dropdown.Item>
                                                         </>
                                             }
                                             {/* <Dropdown.Item onClick={showEditTask}><span className="material-icons md-14">edit</span> Edit</Dropdown.Item> */}

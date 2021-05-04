@@ -12,9 +12,7 @@ const ModalDelete = props => {
     const handleDelete = () => {
         axios
             .delete(`https://todos-project-api.herokuapp.com/todos/${todo_id}/items/${id}`)
-            .then(res => console.log(res))
-        
-        setShowModal(false)
+            .then(res => setShowModal(false))
     }
 
     return (

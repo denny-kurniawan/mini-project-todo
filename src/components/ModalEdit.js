@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
 import Dropdown from 'react-bootstrap/Dropdown'
+import axios from 'axios'
 
 const ModalEdit = props => {
     const { name, percent, id, todo_id } = props
@@ -11,15 +12,21 @@ const ModalEdit = props => {
     const [editTask, setEditTask] = useState(false)
     const showEditTask = () => setEditTask(true)
     const closeEditTask = () => setEditTask(false)
-    
+
     const [editName, setEditName] = useState(name)
     const [editPercent, setEditPercent] = useState(percent)
     const handleChangeEditName = e => setEditName(e.target.value)
     const handleChangeEditPercent = e => setEditPercent(e.target.value)
     const handleEditTask = () => {
-        // const editData = {
-        //     "name"
-        // }
+        const editData = {
+            "name": editName,
+            "progress_percentage": editPercent,
+            "target_todo_id": todo_id
+        }
+
+        axios
+            .patch(`https://todos-project-api.herokuapp.com/todos/${todo_id}/items/${id}`, editData)
+            .then(res => setEditTask(!editTask))
     }
 
     return (
