@@ -14,32 +14,30 @@
 }
 
 .sidebar {
-    position: absolute;
-    width: 68px;
-    min-height: 100vh !important;
-    left: 0px;
-    top: 0px;
+    position: relative;
+    width: 5%;
+    left: 0;
+    top: 0;
+    bottom: 0;
     background: #2F3136;
-
+    color: #E5E5E5;
 }
 
 .content {
-    padding: 1rem 7rem;
+    padding: 1rem 2rem;
+    width: 90%;
 }
 
 .bg {
     background-color: #E5E5E5;
 }
 
-.logo {
-    color: #E5E5E5;
-}
-
 .group {
     width: 24%;
     border-radius: 4px;
     padding: 1rem;
-    
+    margin-top: 1rem;
+
     .group-name {
         padding: .2rem .5rem;
     }
@@ -113,6 +111,55 @@
     &:hover, &:active, &:focus {
         background-color: #F5F0FC !important;
         color: #5E20B3 !important;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .group {
+        width: 32%;
+    }
+
+    .sidebar {
+        width: 68px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .group {
+        width: 49%;
+    }
+
+    .sidebar {
+        width: 68px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .group {
+        width: 100%;
+    }
+
+    .sidebar {
+        width: 68px;
+    }
+
+    .content {
+        width: 85%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .group {
+        width: 100%;
+    }
+
+    .sidebar {
+        width: 68px;
+    }
+
+    .content {
+        width: 80%;
+        padding: 1rem;
     }
 }
 
