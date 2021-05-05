@@ -163,4 +163,19 @@
     }
 }
 
+@media screen and (max-width: 350px) {
+    .group {
+        width: 100%;
+    }
+
+    .sidebar {
+        width: 56px;
+    }
+
+    .content {
+        width: 80%;
+        padding: 1rem;
+    }
+}
+
 @import '~bootstrap/scss/bootstrap.scss';
