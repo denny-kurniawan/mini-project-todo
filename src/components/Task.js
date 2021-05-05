@@ -22,7 +22,7 @@ const Task = (props) => {
                 setTasks(result)
             })
 
-    }, [tasks, id])
+    }, [id])
 
     const [newTask, setNewTask] = useState(false)
     const showNewTask = () => setNewTask(true)
@@ -40,7 +40,10 @@ const Task = (props) => {
         
         axios
             .post(`https://todos-project-api.herokuapp.com/todos/${id}/items`, newData)
-            .then(res => setNewTask(false))
+            .then(res => {
+                setNewTask(false)
+                window.location.reload()
+            })
     }
 
     const handleMoveLeft = (e, todo_id, id) => {
@@ -50,6 +53,9 @@ const Task = (props) => {
 
         axios
             .patch(`https://todos-project-api.herokuapp.com/todos/${todo_id}/items/${id}`, left)
+            .then(res => {
+                window.location.reload()
+            })
     }
 
     const handleMoveRight = (e, todo_id, id) => {
@@ -59,6 +65,9 @@ const Task = (props) => {
 
         axios
             .patch(`https://todos-project-api.herokuapp.com/todos/${todo_id}/items/${id}`, right)
+            .then(res => {
+                window.location.reload()
+            })
     }
 
     return (

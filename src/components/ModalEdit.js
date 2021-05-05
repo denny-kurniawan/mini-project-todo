@@ -26,7 +26,10 @@ const ModalEdit = props => {
 
         axios
             .patch(`https://todos-project-api.herokuapp.com/todos/${todo_id}/items/${id}`, editData)
-            .then(res => setEditTask(!editTask))
+            .then(res => {
+                setEditTask(!editTask)
+                window.location.reload()
+            })
     }
 
     return (

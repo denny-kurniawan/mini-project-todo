@@ -18,7 +18,7 @@ const GroupTask = () => {
                 const result = res.data
                 setGroups(result)
             })
-    }, [groups])
+    }, [])
 
     return (
         <div className="content">
